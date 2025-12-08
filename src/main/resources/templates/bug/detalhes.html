@@ -78,7 +78,7 @@
         </div>
                 <!-- PODER RESOLVER ELE MESMO COM SESSÃO DE TESTES FINALIZADA -->
         <form th:if="${!bug.resolvido}" 
-              
+              sec:authorize="hasRole('ROLE_ADMIN')"
               th:action="@{/bugs/resolver}" 
               method="post" 
               style="display: inline; margin-left: 10px;">
@@ -112,8 +112,8 @@
             </button>
         </form>
 
-        <!-- VOLTAR PARA LISTA DE BUGS (somente ADMIN) -->
-        <a sec:authorize="hasRole('ROLE_ADMIN')"
+        
+        <a
         th:href="@{/bugs/listar}"
         class="button button-secondary"
         style="margin-left: 10px;">
