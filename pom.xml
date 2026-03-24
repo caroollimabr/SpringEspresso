@@ -87,7 +87,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>br.ufscar.dc.dsw.EspressoGamingTestingJPAApplication</mainClass>
+                    <mainClass>br.ufscar.dc.dsw.EspressoGamingTestingJpaApplication</mainClass>
                 </configuration>
             </plugin>
         </plugins>
