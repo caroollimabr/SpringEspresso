@@ -20,6 +20,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Set;
 
 @Controller
 public class SessaoController {
@@ -163,7 +164,7 @@ public class SessaoController {
         model.addAttribute("sessao", sessao);
         
         // VERIFICAR APENAS MEMBROS DO PROJETO
-        List<UsuarioModel> membrosDisponiveis = projeto.getMembros();
+        Set<UsuarioModel> membrosDisponiveis = projeto.getMembros();
         model.addAttribute("usuarios", membrosDisponiveis);
         
         // USUARIO LOGADO

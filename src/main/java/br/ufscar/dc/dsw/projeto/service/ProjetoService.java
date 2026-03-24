@@ -17,7 +17,9 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -114,12 +116,12 @@ public class ProjetoService {
 
         // ADD ESTRATEGIAS
         if (dto.getEstrategiasIds() != null && !dto.getEstrategiasIds().isEmpty()) {
-            List<EstrategiaModel> estrategias = estrategiaRepository.findAllById(dto.getEstrategiasIds());
+            Set<EstrategiaModel> estrategias = new HashSet<>(estrategiaRepository.findAllById(dto.getEstrategiasIds()));
             projeto.setEstrategias(estrategias);
         }
 
         if (dto.getMembrosIds() != null && !dto.getMembrosIds().isEmpty()) {
-            List<UsuarioModel> membros = usuarioRepository.findAllById(dto.getMembrosIds());
+            Set<UsuarioModel> membros = new HashSet<>(usuarioRepository.findAllById(dto.getMembrosIds()));
             projeto.setMembros(membros);
         }
 
@@ -137,10 +139,10 @@ public class ProjetoService {
 
             // Atualizar membros
             if (dto.getMembrosIds() != null) {
-                List<UsuarioModel> membros = usuarioRepository.findAllById(dto.getMembrosIds());
+                Set<UsuarioModel> membros = new HashSet<>(usuarioRepository.findAllById(dto.getMembrosIds()));
                 projeto.setMembros(membros);
             } else {
-                projeto.setMembros(new ArrayList<>());
+                projeto.setMembros(new HashSet<>());
             }
 
             projetoRepository.save(projeto);

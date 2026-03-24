@@ -24,7 +24,7 @@ public class UsuarioModel implements UserDetails {
     private String email;
     private String senha;
 
-    @Column(nullable = false, length = 10)
+    @Column(name = "papel_usuario", nullable = false, length = 10)
     private String role;
 
     // Construtores

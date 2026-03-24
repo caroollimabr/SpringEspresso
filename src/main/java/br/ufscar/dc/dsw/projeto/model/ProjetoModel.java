@@ -20,7 +20,8 @@ public class ProjetoModel {
             joinColumns = @JoinColumn(name = "projeto_id"),
             inverseJoinColumns = @JoinColumn(name = "estrategia_id")
     )
-    private List<EstrategiaModel> estrategias = new ArrayList<>();
+    //private List<EstrategiaModel> estrategias = new ArrayList<>();
+    private Set<EstrategiaModel> estrategias = new HashSet<>();
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(
@@ -28,15 +29,16 @@ public class ProjetoModel {
             joinColumns = @JoinColumn(name = "projeto_id"),
             inverseJoinColumns = @JoinColumn(name = "usuario_id")
     )
-    private List<UsuarioModel> membros = new ArrayList<>();
+    //private List<UsuarioModel> membros = new ArrayList<>();
+    private Set<UsuarioModel> membros = new HashSet<>();
 
     public ProjetoModel() {}
     
     public ProjetoModel(String nome, String descricao) {
         this.nome = nome;
         this.descricao = descricao;
-        this.estrategias = new ArrayList<>();
-        this.membros = new ArrayList<>();
+        this.estrategias = new HashSet<>();
+        this.membros = new HashSet<>();
     }
     
     public Long getId() { return id; }
@@ -44,15 +46,15 @@ public class ProjetoModel {
     public void setNome(String nome) { this.nome = nome; }
     public String getDescricao() { return descricao; }
     public void setDescricao(String descricao) { this.descricao = descricao; }
-    public List<EstrategiaModel> getEstrategias() { return estrategias; }
-    public void setEstrategias(List<EstrategiaModel> estrategias) { this.estrategias = estrategias; }
+    public Set<EstrategiaModel> getEstrategias() { return estrategias; }
+    public void setEstrategias(Set<EstrategiaModel> estrategias) { this.estrategias = estrategias; }
 
-    public List<UsuarioModel> getMembros() { 
+    public Set<UsuarioModel> getMembros() { 
         return membros; 
     }
     
-    public void setMembros(List<UsuarioModel> membros) { 
-        this.membros = membros != null ? membros : new ArrayList<>(); 
+    public void setMembros(Set<UsuarioModel> membros) { 
+        this.membros = membros != null ? membros : new HashSet<>(); 
     }
 
     // GERENCIAR MEMBROS
